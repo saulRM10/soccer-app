@@ -2,10 +2,11 @@
 <html>
 <head>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="{{ asset('js/main.js') }}" defer type="module"></script>
     <title>Games</title>
 </head>
 <body>
-    <button id="ajaxBtn"> click me </button>
+    <button id="getAllTeamsButtonTest"> click me </button>
     <table>
         @foreach ($games as $game)
         <tr>
@@ -26,7 +27,7 @@
         </tr>
         @endforeach
     </table>
-<script src="{{ asset('js/apiCalls.js') }}"></script>
+{{-- <script src="{{ asset('js/apiCalls.js') }}"></script> --}}
 
 </body>
 {{-- <script>

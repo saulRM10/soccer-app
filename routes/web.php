@@ -38,3 +38,6 @@ Route::post('/deleteGame', [GameController::class, 'deleteGame']);
 Route::post('/updateGameForm', [GameController::class, 'updateGameForm']);
 
 Route::post('/updateGame', [GameController::class, 'updateGame']);
+
+// test route, gets all the teams in array 
+Route::get('/teams', [TeamController::class, 'getAll']);

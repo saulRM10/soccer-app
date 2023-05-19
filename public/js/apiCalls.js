@@ -1,23 +1,24 @@
-
 const ApiCalls = function () {
+    var loadDomListeners = function () {
+      $("#getAllTeamsButtonTest").on("click", getAllTeams);
 
-    var loadDomListners = function () {
-        console.log("loadDomListners executed in public");
-        $("#ajaxBtn").onClick(getAllGames);
-    }
-    //Route::get('/games', [GameController::class, 'getAll']);
-    var getAllGames = function () {
-        fetch('/games')
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error(error));
-    }
-
-    return{
-        getAllGames,
-        loadDomListners
-    }
-}; 
-
-export default ApiCalls;
-//module.exports = ApiCalls(); 
+    };
+  
+    var getAllTeams = function () {
+        return fetch('/teams')
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Error: ' + response.status);
+          }
+          return response.json();
+        })
+        .catch(error => console.error(error))
+    };
+  
+    return {
+      loadDomListeners,
+      getAllTeams,
+    };
+  };
+  
+  export default ApiCalls();
