@@ -1,8 +1,4 @@
 const ApiCalls = function () {
-    var loadDomListeners = function () {
-      $("#getAllTeamsButtonTest").on("click", getAllTeams);
-
-    };
   
     var getAllTeams = function () {
         return fetch('/teams')
@@ -16,7 +12,6 @@ const ApiCalls = function () {
     };
   
     return {
-      loadDomListeners,
       getAllTeams,
     };
   };
