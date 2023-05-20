@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" defer></script>
+    <script src="{{ asset('js/main.js') }}" defer type="module"></script>
     <title>Games</title>
 </head>
 <body>
+    <button id="getAllTeamsButtonTest"> show all teams </button>
+    <div id="teamsContainer"></div>
     <table>
         @foreach ($games as $game)
         <tr>
@@ -24,5 +28,7 @@
         </tr>
         @endforeach
     </table>
+
 </body>
+
 </html>
