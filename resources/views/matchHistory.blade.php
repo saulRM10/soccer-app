@@ -6,7 +6,8 @@
     <title>Games</title>
 </head>
 <body>
-    <button id="getAllTeamsButtonTest"> click me </button>
+    <button id="getAllTeamsButtonTest"> show all teams </button>
+    <div id="teamsContainer"></div>
     <table>
         @foreach ($games as $game)
         <tr>
@@ -27,13 +28,7 @@
         </tr>
         @endforeach
     </table>
-{{-- <script src="{{ asset('js/apiCalls.js') }}"></script> --}}
 
 </body>
-{{-- <script>
-   // const apiCalls = require('public/js/apiCalls');
-   import { ApiCalls } from '/public/js//apiCalls.js';
-    apiCalls.loadDomListners();
-</script> --}}
 
 </html>
