@@ -29,6 +29,9 @@ Route::get('/table', [TeamController::class, 'getAllTeamsInDivisionAndSession'])
 
 Route::get('/games', [GameController::class, 'getAll']);
 
+// test rout to get games w/ api call 
+Route::get('/gamesTest', [GameController::class, 'getGames']);
+
 Route::get('/setUpGameForm', [GameController::class, 'setUpNewGameForm']);
 
 Route::post('/createGame', [GameController::class, 'createNewGame']);
