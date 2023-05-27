@@ -15,13 +15,12 @@ class TeamController extends Controller
     public function getAllTeamsInDivisionAndSession( Request $request){
 
         $foundTeams = new Team; 
-        $formData = $request->all();
-        $sessionId = $formData['session_id'];
-        $divisionId = $formData['division_id'];
+        $sessionId = $request->header('session-Id');
+        $divisionId = $request->header('Division-Id');
 
         $foundTeams = $foundTeams->getAllTeamsInDivisionAndSession( $divisionId ,  $sessionId );
 
-        return view('teams', ['teams' => $foundTeams]); 
+        return response()->json($foundTeams);
 
     }
 
