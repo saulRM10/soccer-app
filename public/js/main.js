@@ -4,16 +4,16 @@ $(document).ready(function() {
 
   var updateViewWithTeams = async function() {
     var teamsContainer = document.getElementById('teamsContainer');
-    teamsContainer.innerHTML = '';
 
     const teamData = await ApiCalls.getAllTeams();
 
-    teamData.teams.forEach(function(team) {
-        var teamElement = document.createElement('div');
-        teamElement.textContent = team.team_name;
+    const response = await fetch('resources/views/dynamicTemplates/teamTemplate.njk');
+    const templateContent = await response.text();
 
-        teamsContainer.appendChild(teamElement);
-      });
+    const renderedTemplate = nunjucks.renderString(templateContent, { teamData });
+
+    teamsContainer.innerHTML = renderedTemplate;
+
 };
 
 $("#getAllTeamsButtonTest").on("click", updateViewWithTeams);

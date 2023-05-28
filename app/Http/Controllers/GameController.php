@@ -10,7 +10,7 @@ class GameController extends Controller
 {
     public function getAll(){
         $games = Game::all();
-        return view('matchHistory', ['games'=> $games]);
+        return view('mh', ['games'=> $games]);
     }
 
     public function setUpNewGameForm (Request $request){
