@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Engines\NunjucksEngine;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +15,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        View::addExtension('njk', 'nunjucks', function () {
+            return new NunjucksEngine($this->app['files']);
+        });
     }
 
     /**
