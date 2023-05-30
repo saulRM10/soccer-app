@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Models\Game;
 use App\Models\Team;
 
@@ -170,8 +171,7 @@ class GameController extends Controller
         $game = new Game;
         $game->deleteAGame($gameId);
 
-        $games = Game::all();
-        return view('matchHistory', ['games'=> $games]);
+        return response()->json(['status' => 'success'], 200);
     }
 
 }
