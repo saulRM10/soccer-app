@@ -32,5 +32,20 @@ return [
         'VIEW_COMPILED_PATH',
         realpath(storage_path('framework/views'))
     ),
+    
+        /*
+    |--------------------------------------------------------------------------
+    | Nunjucks Template Extension
+    |--------------------------------------------------------------------------
+    |
+    | Here you can specify the extension for Nunjucks templates. By default,
+    | we'll assume `.njk` as the extension. If you prefer a different
+    | extension, you can modify it here.
+    |
+    */
+
+    'nunjucks' => [
+        'extension' => 'njk',
+    ],
 
 ];

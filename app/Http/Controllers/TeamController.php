@@ -9,7 +9,7 @@ class TeamController extends Controller
 {
     public function getAll(){
         $teams = Team::all();
-        return view('teams', ['teams' => $teams]);
+        return response()->json(['teams' => $teams]);
     }
 
     public function getAllTeamsInDivisionAndSession( Request $request){
