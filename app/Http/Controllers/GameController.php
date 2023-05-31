@@ -166,7 +166,7 @@ class GameController extends Controller
 
     public function deleteGame(Request $request) {
 
-        $gameId = $request->input('id');
+        $gameId = $request->header('game-Id');
 
         $game = new Game;
         $game->deleteAGame($gameId);

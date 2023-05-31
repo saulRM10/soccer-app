@@ -38,6 +38,22 @@ const ApiCalls = function () {
         .catch(error => console.error(error))
     }
 
+    var deleteGame = function(gameId) {
+        return fetch('/deleteGame', {
+            method: 'POST',
+            headers: {
+                'game-Id': gameId,
+            },
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error: ' + response.status);
+            }
+            return response.json();
+        })
+        .catch(error => console.error(error));
+    };
+
     return {
       getAllTeams,
       getMatchHistory,
