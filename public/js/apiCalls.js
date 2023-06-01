@@ -57,7 +57,8 @@ const ApiCalls = function () {
     return {
       getAllTeams,
       getMatchHistory,
-      getTeamsByDivisionAndSession
+      getTeamsByDivisionAndSession,
+      deleteGame
     };
   };
   
