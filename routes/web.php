@@ -25,6 +25,8 @@ Route::get('/game', function () {
 
 Route::post('/newTeam' , [TeamController::class, 'createNewTeam']);
 
+Route::post('/deleteTeam', [GameController::class, 'deleteTeam']);
+
 Route::get('/table', [TeamController::class, 'getAllTeamsInDivisionAndSession']);
 
 Route::get('/games', [GameController::class, 'getAll']);

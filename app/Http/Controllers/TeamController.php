@@ -41,4 +41,15 @@ class TeamController extends Controller
         ], 201);
 
     }
+
+    public function deleteTeam(Request $request){
+        
+        $teamId = $request->header('team-Id');
+
+        $team = new Team;
+        $team->deleteTeam($teamId);
+
+        
+        return response()->json(['status' => 'success'], 200);
+    }
 }
