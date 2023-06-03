@@ -70,11 +70,29 @@ const ApiCalls = function () {
         .catch(error => console.error(error));
     };
 
+    var renderView = function (updatedData, viewName, viewRoute){
+      return fetch(`/${viewRoute}`, {
+        headers: {
+          'data': updatedData,
+          'view-name': viewName,
+        }
+    }
+    ).then(response => {
+      if (!response.ok) {
+        throw new Error('Error: ' + response.status);
+      }
+      return response.json();
+    })
+    .catch(error => console.error(error))
+    }
+
     return {
       getAllTeams,
       getMatchHistory,
       getTeamsByDivisionAndSession,
-      deleteGame
+      deleteGame, 
+      deleteTeam,
+      renderView
     };
   };
   
