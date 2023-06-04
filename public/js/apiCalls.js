@@ -73,7 +73,7 @@ const ApiCalls = function () {
     var renderView = function (updatedData, viewName, viewRoute){
       return fetch(`/${viewRoute}`, {
         headers: {
-          'data': updatedData,
+          'data': JSON.stringify(updatedData),
           'view-name': viewName,
         }
     }
@@ -81,7 +81,7 @@ const ApiCalls = function () {
       if (!response.ok) {
         throw new Error('Error: ' + response.status);
       }
-      return response.json();
+      return response.text();
     })
     .catch(error => console.error(error))
     }

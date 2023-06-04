@@ -27,7 +27,9 @@
     <table>
         @foreach ($teams as $team)
         <tr>
-            <td>{{ $team['id'] }} - {{ $team['team_name'] }}</td>
+            {{-- <td>{{ $team['id'] }} - {{ $team['team_name'] }}</td> --}}
+            <td>{{ $team->id }} - {{ $team->team_name }}</td>
+
         </tr>
         @endforeach
     </table>
