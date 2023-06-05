@@ -74,7 +74,6 @@ const ApiCalls = function () {
       return fetch(`/${viewRoute}`, {
         headers: {
           'data': JSON.stringify(updatedData),
-          'view-name': viewName,
         }
     }
     ).then(response => {

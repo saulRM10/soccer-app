@@ -15,9 +15,8 @@ class TeamController extends Controller
     public function getSortedTeams(Request $request){
 
         $sortedTeamData = json_decode($request->header('data'));
-        $view =  $request->header('view-name');
 
-        return view( $view, ['teams' => $sortedTeamData]);
+        return view( 'teams', ['teams' => $sortedTeamData]);
     }
 
     public function getAllTeamsInDivisionAndSession( Request $request){
