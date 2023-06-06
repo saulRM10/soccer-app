@@ -9,7 +9,7 @@ $(document).ready(function() {
 
 var handleDeletionOfGame = async function() {
   const gameId = $(this).data('game-id');
-  const statusOfGameDeletion = await ApiCalls.deleteGame(gameId); 
+  await ApiCalls.deleteGame(gameId,6,5); 
 }
 
 var showTeams = async function(){

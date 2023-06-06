@@ -38,11 +38,14 @@ const ApiCalls = function () {
         .catch(error => console.error(error))
     }
 
-    var deleteGame = function(gameId) {
+    var deleteGame = function(gameId, sessionId, divisionId) {
+      console.log(gameId);
         return fetch('/deleteGame', {
             method: 'POST',
             headers: {
                 'game-Id': gameId,
+                'session-Id': sessionId,
+                'division-Id': divisionId
             },
         })
         .then(response => {
@@ -70,7 +73,7 @@ const ApiCalls = function () {
         .catch(error => console.error(error));
     };
 
-    var renderView = function (updatedData, viewName, viewRoute){
+    var renderView = function (updatedData, viewRoute){
       return fetch(`/${viewRoute}`, {
         headers: {
           'data': JSON.stringify(updatedData),
