@@ -171,7 +171,7 @@ class GameController extends Controller
         $divisionId = $request->header('Division-Id');
         $game = new Game;
         $game->deleteAGame($gameId);
-        $games->getGamesByDivisionAndSession( $sessionId, $divisionId);
+        $game->getGamesByDivisionAndSession( $sessionId, $divisionId);
 
 
         return view('matchHistory', ['games'=> $games]);

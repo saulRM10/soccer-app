@@ -9,7 +9,9 @@ $(document).ready(function() {
 
 var handleDeletionOfGame = async function() {
   const gameId = $(this).data('game-id');
-  await ApiCalls.deleteGame(gameId,6,5); 
+  var csrfToken = $(this).data('token');
+  
+  await ApiCalls.deleteGame(gameId,6,5, csrfToken); 
 }
 
 var showTeams = async function(){

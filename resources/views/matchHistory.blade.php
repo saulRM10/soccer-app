@@ -20,7 +20,7 @@
                 </form>
             </td>
             <td>
-                <button class="deleteGame" data-game-id="{{ $game['id'] }}">X</button>
+                <button class="deleteGame" data-game-id="{{ $game['id'] }}" data-token="{{ htmlspecialchars(csrf_token()) }}">X</button>
 
             </td>
         </tr>
