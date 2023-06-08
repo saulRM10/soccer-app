@@ -20,8 +20,10 @@
                 </form>
             </td>
             <td>
-                <button class="deleteGame" data-game-id="{{ $game['id'] }}" data-token="{{ htmlspecialchars(csrf_token()) }}">X</button>
-
+                <form action="/deleteGame" method="post">
+                    @csrf
+                        <button type="submit" name="id" value="{{ $game['id'] }}" > X </button>
+                </form>
             </td>
         </tr>
         @endforeach
