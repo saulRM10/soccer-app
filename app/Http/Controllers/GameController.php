@@ -166,15 +166,18 @@ class GameController extends Controller
 
     public function deleteGame(Request $request) {
 
-        $gameId = $request->header('game-Id');
-        $sessionId = $request->header('session-Id');
-        $divisionId = $request->header('Division-Id');
+        $gameId = $request->get('id'); 
+
         $game = new Game;
+        
+        $gameData = $game->getAGame($gameId);
+        $divisionId = $gameData->division_id;
+        $sessionId = $gameData->session_id;
+
         $game->deleteAGame($gameId);
-        $game->getGamesByDivisionAndSession( $sessionId, $divisionId);
+        $gamesFound = $game->getGamesByDivisionAndSession( $sessionId, $divisionId);
 
-
-        return view('matchHistory', ['games'=> $games]);
+        return view('matchHistory', ['games'=> $gamesFound]);
     }
 
 }
