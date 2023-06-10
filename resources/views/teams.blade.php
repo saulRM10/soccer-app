@@ -30,6 +30,13 @@
             {{-- <td>{{ $team['id'] }} - {{ $team['team_name'] }}</td> --}}
             <td>{{ $team->id }} - {{ $team->team_name }}</td>
 
+            <td>
+                <form action="/deleteTeam" method="post">
+                    @csrf
+                        <button type="submit" name="data" value="{{ $team->id}}|{{$team->session_id}}|{{$team->division_id}}" > X </button>
+                </form>
+            </td>
+
         </tr>
         @endforeach
     </table>
