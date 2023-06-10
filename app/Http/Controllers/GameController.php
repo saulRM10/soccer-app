@@ -176,8 +176,14 @@ class GameController extends Controller
 
         $game->deleteAGame($gameId);
         $gamesFound = $game->getGamesByDivisionAndSession( $sessionId, $divisionId);
+        
+        $gameAttributes = [];
+        
+        foreach ($gamesFound as $game) {
+         $gameAttributes[] = $game->getAttributes();
+        }
 
-        return view('matchHistory', ['games'=> $gamesFound]);
+        return view('matchHistory', ['games'=> $gameAttributes]);
     }
 
 }
