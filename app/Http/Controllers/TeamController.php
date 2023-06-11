@@ -51,12 +51,33 @@ class TeamController extends Controller
 
     public function deleteTeam(Request $request){
         
-        $teamId = $request->header('team-Id');
+        $data = $request->input('data');
+        $values = explode('|', $data);
+        
+        $teamId = $values[0];
+        $sessionId = $values[1];
+        $divisionId = $values[2];
 
         $team = new Team;
-        $team->deleteTeam($teamId);
 
+        $allTeamsInDiv = $team->getAllTeamsInDivisionAndSession($divisionId, $sessionId);
         
-        return response()->json(['status' => 'success'], 200);
+        $teamAttributes = [];
+        
+        foreach ($allTeamsInDiv as $team) {
+         $teamAttributes[] = $team->getAttributes();
+        }
+
+        $teamAttributesObject = collect($teamAttributes);
+
+        //dd(gettype($teamAttributesObject));
+
+       // dd(gettype($teamAttributes));
+        //$teamsData = json_encode($teamAttributes);
+        //$teamAttributes2 = json_decode($teamsData, true);
+       // dd(json_encode($teamAttributes));
+        return view('teams', ['teams'=> $teamAttributesObject]);
+
+        //return response()->json(['status' => 'success'], 200);
     }
 }
