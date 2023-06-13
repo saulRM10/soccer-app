@@ -35,7 +35,7 @@ var showTeams = async function(){
   const route = 'teamsList';
   
   const html = await ApiCalls.renderView(teams, route);
-  document.getElementById('teamsContainer').innerHTML = html;
+  $('#teamsContainer').html(html);
 }
 
 
