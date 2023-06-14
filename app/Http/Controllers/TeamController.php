@@ -70,14 +70,6 @@ class TeamController extends Controller
 
         $teamAttributesObject = collect($teamAttributes);
 
-        //dd(gettype($teamAttributesObject));
-
-       // dd(gettype($teamAttributes));
-        //$teamsData = json_encode($teamAttributes);
-        //$teamAttributes2 = json_decode($teamsData, true);
-       // dd(json_encode($teamAttributes));
-        return view('teams', ['teams'=> $teamAttributesObject]);
-
-        //return response()->json(['status' => 'success'], 200);
+        return view('teams', ['teams'=> json_decode($teamAttributesObject)]);
     }
 }
