@@ -7,13 +7,6 @@ $(document).ready(function() {
     const teams = await ApiCalls.getTeamsByDivisionAndSession(6,5);
 };
 
-var handleDeletionOfGame = async function() {
-  const gameId = $(this).data('game-id');
-  var csrfToken = $(this).data('token');
-  
-  await ApiCalls.deleteGame(gameId,6,5, csrfToken); 
-}
-
 var showTeams = async function(){
   const teams = await ApiCalls.getTeamsByDivisionAndSession(6,5); 
 
@@ -40,7 +33,4 @@ var showTeams = async function(){
 
 
 $("#getAllTeamsButtonTest").on("click", showTeams);
-$(".deleteGame").on("click", handleDeletionOfGame);
-
-
 });
