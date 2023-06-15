@@ -28,7 +28,11 @@ var showTeams = async function(){
   const route = 'teamsList';
   
   const html = await ApiCalls.renderView(teams, route);
+  if(html){
   $('#teamsContainer').html(html);
+  }else{
+    console.error("View undefined for route: " + route);
+  }
 }
 
 
