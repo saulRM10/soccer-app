@@ -31,7 +31,7 @@ var showTeams = async function(){
   if(html){
   $('#teamsContainer').html(html);
   }else{
-    console.error("View undefined for route: " + route);
+    throw new Error(`Failed to retrieve view for route: ${route}`);
   }
 }
 
