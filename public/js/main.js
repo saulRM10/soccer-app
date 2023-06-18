@@ -29,15 +29,11 @@ var showTeams = async function(){
   
   const html = await ApiCalls.renderView(teams, route);
 
-  if(html){
   render('#teamsContainer', html);
-  }else{
-    throw new Error(`Failed to retrieve view for route: ${route}`);
-  }
 }
 
 var render = function(location, content){
-  $(`${location}`).html(content);
+ content ? $(`${location}`).html(content) : throw new Error(`no content to render`); 
 }
 
 
