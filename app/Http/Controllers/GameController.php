@@ -183,7 +183,10 @@ class GameController extends Controller
          $gameAttributes[] = $game->getAttributes();
         }
 
-        return view('matchHistory', ['games'=> $gameAttributes]);
+        $decodedGameData = json_decode($encodedGameData, true);
+
+
+        return view('matchHistory', ['games'=> $decodedGameData]);
     }
 
 }
