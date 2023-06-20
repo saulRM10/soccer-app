@@ -33,7 +33,11 @@ var showTeams = async function(){
 }
 
 var render = function(location, content){
- content ? $(`${location}`).html(content) : throw new Error(`no content to render`); 
+  if (content) {
+    $(`${location}`).html(content);
+  } else {
+    throw new Error('no content to render');
+  }
 }
 
 
