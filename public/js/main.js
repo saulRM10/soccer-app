@@ -8,8 +8,15 @@ $(document).ready(function() {
 };
 
 var showTeams = async function(){
-  const teams = await ApiCalls.getTeamsByDivisionAndSession(6,5); 
+  let teams = await ApiCalls.getTeamsByDivisionAndSession(6,5); 
+  teams = sortTeams(teams);
+  const route = 'teamsList';
+  const html = await ApiCalls.renderView(teams, route);
 
+  render('#teamsContainer', html);
+}
+
+var sortTeams = function (teams){
   teams.sort((a, b) => {
     const nameA = a.team_name.toUpperCase();
     const nameB = b.team_name.toUpperCase();
@@ -25,11 +32,7 @@ var showTeams = async function(){
     return 0;
   });
 
-  const route = 'teamsList';
-  
-  const html = await ApiCalls.renderView(teams, route);
-
-  render('#teamsContainer', html);
+  return teams;
 }
 
 var render = function(location, content){
