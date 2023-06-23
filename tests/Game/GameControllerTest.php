@@ -23,4 +23,16 @@ class GameControllerTest extends TestCase
         $this->assertEquals(2, $response->games->count());
         $this->assertViewHas('games');
     }
+
+    public function testDeleteGame()
+    {
+        $game = Game::factory()->create();
+        $controller = new GameController();
+        $request = new Request(['id' => $game->id]);
+
+        $response = $controller->deleteGame($request);
+
+        $this->assertDatabaseMissing('games', ['id' => $game->id]);
+        $this->assertViewHas('games');
+    }
 }
