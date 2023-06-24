@@ -6,6 +6,7 @@ use App\Http\Controllers\GameController;
 use App\Models\Game;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\Request;
 use Tests\TestCase;
 
 class GameControllerTest extends TestCase
@@ -26,7 +27,21 @@ class GameControllerTest extends TestCase
 
     public function testDeleteGame()
     {
-        $game = Game::factory()->create();
+        $game = Game::create([
+            'team_one_id' => 1,
+            'team_two_id' => 2,
+            'match_date' => '2023-06-21',
+            'field_id' => 3,
+            'session_id' => 4,
+            'division_id' => 5,
+            'team_one_name' => 'Team One',
+            'team_two_name' => 'Team Two',
+            'team_one_goals' => 2,
+            'team_two_goals' => 1,
+            'winner_id' => 1,
+            'loser_id' => 2,
+            'draw' => false,
+        ]);
         $controller = new GameController();
         $request = new Request(['id' => $game->id]);
 
