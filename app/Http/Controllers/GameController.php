@@ -183,16 +183,11 @@ class GameController extends Controller
         foreach ($gamesFound as $game) {
          $gameAttributes[] = $game->getAttributes();
         }
-
-        $decodedGameData = json_decode($gameAttributes, true);
-
-       } else {
-        $decodedGameData = [];
        }
 
 
 
-        return view('matchHistory', ['games'=> $decodedGameData]);
+        return view('matchHistory', ['games'=> $gameAttributes]);
     }
 
 }

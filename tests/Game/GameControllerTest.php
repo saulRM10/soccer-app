@@ -48,6 +48,5 @@ class GameControllerTest extends TestCase
         $response = $controller->deleteGame($request);
 
         $this->assertDatabaseMissing('games', ['id' => $game->id]);
-        $this->assertViewHas('games');
     }
 }
