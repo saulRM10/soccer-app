@@ -179,14 +179,15 @@ class GameController extends Controller
         
         $gameAttributes = [];
         
+        if($gamesFound->isNotEmpty()){
         foreach ($gamesFound as $game) {
          $gameAttributes[] = $game->getAttributes();
         }
+       }
 
-        $decodedGameData = json_decode($encodedGameData, true);
 
 
-        return view('matchHistory', ['games'=> $decodedGameData]);
+        return view('matchHistory', ['games'=> $gameAttributes]);
     }
 
 }
