@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Http\Controllers\GameController;
 use App\Models\Game;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Http\Request;
@@ -15,7 +16,9 @@ class GameControllerTest extends TestCase
 
     public function testGetAll()
     {
-        $game1 = Game::create([
+        $this->withoutEvents();
+
+        $game1 = factory(Game::class)->create([
             'team_one_id' => 1,
             'team_two_id' => 2,
             'match_date' => '2023-06-21',
@@ -31,7 +34,7 @@ class GameControllerTest extends TestCase
             'draw' => false,
         ]);
 
-        $game2 = Game::create([
+        $game2 = factory(Game::class)->create([
             'team_one_id' => 3,
             'team_two_id' => 4,
             'match_date' => '2023-06-22',
