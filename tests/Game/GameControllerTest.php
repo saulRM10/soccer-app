@@ -18,9 +18,9 @@ class GameControllerTest extends TestCase
     {
         $this->withoutEvents();
 
-        $game1 = factory(Game::class)->create([
-            'team_one_id' => 1,
-            'team_two_id' => 2,
+        $game1 = Game::create([
+            'team_one_id' => 111,
+            'team_two_id' => 222,
             'match_date' => '2023-06-21',
             'field_id' => 3,
             'session_id' => 4,
@@ -29,14 +29,14 @@ class GameControllerTest extends TestCase
             'team_two_name' => 'Team Two',
             'team_one_goals' => 2,
             'team_two_goals' => 1,
-            'winner_id' => 1,
-            'loser_id' => 2,
+            'winner_id' => 111,
+            'loser_id' => 222,
             'draw' => false,
         ]);
 
-        $game2 = factory(Game::class)->create([
-            'team_one_id' => 3,
-            'team_two_id' => 4,
+        $game2 = Game::create([
+            'team_one_id' => 333,
+            'team_two_id' => 444,
             'match_date' => '2023-06-22',
             'field_id' => 6,
             'session_id' => 7,
@@ -45,8 +45,8 @@ class GameControllerTest extends TestCase
             'team_two_name' => 'Team Four',
             'team_one_goals' => 3,
             'team_two_goals' => 2,
-            'winner_id' => 3,
-            'loser_id' => 4,
+            'winner_id' => 333,
+            'loser_id' => 444,
             'draw' => false,
         ]);
 
@@ -54,8 +54,7 @@ class GameControllerTest extends TestCase
 
         $response = $controller->getAll();
 
-        $this->assertEquals(2, $response->games->count());
-        $this->assertViewHas('games');
+        $this->assertEquals("test", $response->games);
     }
 
     public function testDeleteGame()
