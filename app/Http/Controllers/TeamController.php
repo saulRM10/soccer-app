@@ -31,7 +31,6 @@ class TeamController extends Controller
 
     }
 
-    // create a new team
     public function createNewTeam(Request $request ){
 
         $validatedData = $request->validate([
@@ -43,9 +42,8 @@ class TeamController extends Controller
         $newTeam = new Team;
         $newTeam = $newTeam->createTeam($validatedData);
 
-        return response()->json([
-            'message'=> 'Team created successfully'
-        ], 201);
+        return view( 'teams', ['teams' => $newTeam]);
+
 
     }
 
