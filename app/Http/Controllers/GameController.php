@@ -15,10 +15,15 @@ class GameController extends Controller
         return view('matchHistory', ['games'=> $games]);
     }
 
-    public function getGames() {
-        $games = Game::all();
+    public function getGamesBySessionAndDivision() {
+        $formData = $request->all();
+        $sessionId = $formData['session_id'];
+        $divisionId = $formData['division_id'];
+        $games = new Game;
+        
         return response()->json(['games' => $games]);
     }
+
     public function setUpNewGameForm (Request $request){
 
         $teams = new Team; 
