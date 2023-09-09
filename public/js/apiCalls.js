@@ -12,7 +12,12 @@ const ApiCalls = function () {
     };
 
     var getMatchHistory = function ( ) {
-        return fetch('/gamesTest')
+        return fetch('/matchHistory', {
+          headers: {
+            'session-Id': sessionId,
+            'division-Id': divisionId
+          }
+      })
         .then(response => {
           if (!response.ok) {
             throw new Error('Error: ' + response.status);

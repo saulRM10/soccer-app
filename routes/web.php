@@ -31,7 +31,7 @@ Route::get('/table', [TeamController::class, 'getAllTeamsInDivisionAndSession'])
 
 Route::get('/games', [GameController::class, 'getAll']);
 
-Route::get('/gamesTest', [GameController::class, 'getGames']);
+Route::get('/matchHistory', [GameController::class, 'getGamesBySessionAndDivision']);
 
 Route::get('/setUpGameForm', [GameController::class, 'setUpNewGameForm']);
 
