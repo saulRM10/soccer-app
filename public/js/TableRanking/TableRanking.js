@@ -1,4 +1,8 @@
 const TableRankings = function () {
+    var findInFinal = function (finalTeamPoints, team_id) {
+        return finalTeamPoints.findIndex(obj => obj.team_id === team_id);
+    }
+
     var getTeamPointsAndGoalDifferential = function (teamData, matchData) {
 
         if (!teamData && !matchData) {
@@ -47,12 +51,14 @@ const TableRankings = function () {
         return finalTeamPoints;
     }
 
-    var findInFinal = function (finalTeamPoints, team_id) {
-        return finalTeamPoints.findIndex(obj => obj.team_id === team_id);
+    var sortTeamsByPoints = function (teamData) {
+        teamData.sort((team_a, team_b) => team_b.points - team_a.points);
+        return teamData;
     }
 
     return {
         getTeamPointsAndGoalDifferential,
+        sortTeamsByPoints
     }
 }
 

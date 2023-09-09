@@ -27,6 +27,14 @@ describe("getTeamPointsAndGoalDifferential()", function () {
     })
 })
 
+describe("sortTeamsByPoints()", function () {
+    it("given team data, it returns team data sorted by points in descending order", function () {
+        const calculatedTeamData = [{ "gd": -2, "points": 1, "team_id": 1 }, { "gd": 2, "points": 7, "team_id": 2 }, { "gd": 0, "points": 4, "team_id": 3 }, { "gd": 0, "points": 4, "team_id": 4 }];
+        const result = TableRankings.sortTeamsByPoints(calculatedTeamData);
+        expect(result).toStrictEqual([{ "gd": 2, "points": 7, "team_id": 2 }, { "gd": 0, "points": 4, "team_id": 3 }, { "gd": 0, "points": 4, "team_id": 4 }, { "gd": -2, "points": 1, "team_id": 1 }]);
+    })
+})
+
 var getTeamsData = function () {
     return [
         {
