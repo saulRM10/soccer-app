@@ -56,13 +56,13 @@ const TableRankings = function () {
         return teamData;
     }
 
-    var getRangeIndexOfTiedPointsTeams = function (teamData) {
+    var getRangeIndexOfTiedPointsTeams = function (sortedByPointsTeam) {
         let i = 0;
         let j = 1;
         let arrWithIndexes = [];
 
-        while (j < teamData.length) {
-            if (teamData[i].points != teamData[j].points) {
+        while (j < sortedByPointsTeam.length) {
+            if (sortedByPointsTeam[i].points != sortedByPointsTeam[j].points) {
                 if (i == j - 1) {
                     i++;
                 }
@@ -73,12 +73,12 @@ const TableRankings = function () {
                 }
             }
             else {
-                if (j == teamData.length - 1) {
+                if (j == sortedByPointsTeam.length - 1) {
                     arrWithIndexes.push(i);
                     arrWithIndexes.push(j);
 
                 }
-                else if (teamData[j].points != teamData[j + 1].points) {
+                else if (sortedByPointsTeam[j].points != sortedByPointsTeam[j + 1].points) {
                     arrWithIndexes.push(i);
                     arrWithIndexes.push(j);
                     i = j + 1;
@@ -118,11 +118,14 @@ const TableRankings = function () {
     }
 
 
+
+
     return {
         getTeamPointsAndGoalDifferential,
         sortTeamsByPoints,
         getRangeIndexOfTiedPointsTeams,
-        sortTeamsByGoalDifferential
+        sortTeamsByGoalDifferential,
+
     }
 }
 
