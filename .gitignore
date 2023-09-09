@@ -29,3 +29,7 @@ yarn-error.log
 *.sqlite
 npm-debug.log
 yarn-error.log
+
+#Jest
+/node_modules/
+/coverage/
