@@ -159,6 +159,21 @@ describe("getRangeIndexOfTiedGdTeams()", function () {
     })
 })
 
+describe("getRelevantTeam()", function () {
+    it("given an array with a pair, return all relevant teams within pair : 0", function () {
+        const teamData = [{ "team_id": 1, "points": 6, "gd": 7 }, { "team_id": 3, "points": 4, "gd": 1 }, { "team_id": 2, "points": 4, "gd": 1 }];
+        const tiedPointsAndGdTeamsIndexRange = [1, 2];
+        const result = TableRankings.getRelevantTeam(teamData, tiedPointsAndGdTeamsIndexRange);
+        expect(result).toStrictEqual({ "2": 0, "3": 0 });
+    })
+    it("given an array with a pair, return all relevant teams within pair : 0", function () {
+        const teamData = [{ "team_id": 1, "points": 4, "gd": 1 }, { "team_id": 2, "points": 4, "gd": 1 }, { "team_id": 3, "points": 4, "gd": 1 }];
+        const tiedPointsAndGdTeamsIndexRange = [0, 2];
+        const result = TableRankings.getRelevantTeam(teamData, tiedPointsAndGdTeamsIndexRange);
+        expect(result).toStrictEqual({ "1": 0, "2": 0, "3": 0 });
+    })
+})
+
 
 var getTeamsData = function () {
     return [

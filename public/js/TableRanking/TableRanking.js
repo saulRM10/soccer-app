@@ -150,13 +150,27 @@ const TableRankings = function () {
         return arrWithIndexes;
     }
 
+    var getRelevantTeam = function (teamData, tiedPointsAndGdTeamsIndexRange) {
+        let calculateWinnerIds = {};
+        let begin = tiedPointsAndGdTeamsIndexRange[0];
+        let end = tiedPointsAndGdTeamsIndexRange[1];
+
+        for (let i = begin; i <= end; i++) {
+            var getTeamId = teamData[i].team_id;
+            calculateWinnerIds[getTeamId] = 0;
+        }
+
+        return calculateWinnerIds;
+    }
+
 
     return {
         getTeamPointsAndGoalDifferential,
         sortTeamsByPoints,
         getRangeIndexOfTiedPointsTeams,
         sortTeamsByGoalDifferential,
-        getRangeIndexOfTiedGdTeams
+        getRangeIndexOfTiedGdTeams,
+        getRelevantTeam
     }
 }
 
