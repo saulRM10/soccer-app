@@ -115,6 +115,50 @@ describe("sortTeamsByGoalDifferential()", function () {
     })
 })
 
+describe("getRangeIndexOfTiedGdTeams()", function () {
+    it("given sorted teams by points & gd, it returns range of index with similar points & gd", function () {
+        const sortedByPointsAndGDTeam =
+            [{ "gd": 1, "points": 5 },
+            { "gd": 0, "points": 5 },
+            { "gd": 6, "points": 4 },
+            { "gd": 2, "points": 4 },
+            { "gd": 1, "points": 4 },
+            { "gd": 1, "points": 4 },
+            { "gd": 1, "points": 3 },
+            { "gd": 1, "points": 2 }];
+        const result = TableRankings.getRangeIndexOfTiedGdTeams(sortedByPointsAndGDTeam);
+        expect(result).toStrictEqual([[4, 5]]);
+    })
+    it("given sorted teams by points & gd, it returns range of index with similar points & gd", function () {
+        const sortedByPointsAndGDTeam =
+            [{ "gd": 1, "points": 5 },
+            { "gd": 1, "points": 5 },
+            { "gd": 1, "points": 4 },
+            { "gd": 1, "points": 4 }];
+        const result = TableRankings.getRangeIndexOfTiedGdTeams(sortedByPointsAndGDTeam);
+        expect(result).toStrictEqual([[0, 1], [2, 3]]);
+    })
+    it("given sorted teams by points & gd, it returns range of index with similar points & gd", function () {
+        const sortedByPointsAndGDTeam =
+            [{ "gd": 1, "points": 5 },
+            { "gd": 1, "points": 4 },
+            { "gd": 1, "points": 4 },
+            { "gd": 1, "points": 4 }];
+        const result = TableRankings.getRangeIndexOfTiedGdTeams(sortedByPointsAndGDTeam);
+        expect(result).toStrictEqual([[1, 3]]);
+    })
+    it("given sorted teams by points & gd, it returns range of index with similar points & gd", function () {
+        const sortedByPointsAndGDTeam =
+            [{ "gd": 1, "points": 5 },
+            { "gd": 1, "points": 5 },
+            { "gd": 1, "points": 4 },
+            { "gd": 1, "points": 4 },
+            { "gd": 1, "points": 4 }];
+        const result = TableRankings.getRangeIndexOfTiedGdTeams(sortedByPointsAndGDTeam);
+        expect(result).toStrictEqual([[0, 1], [2, 4]]);
+    })
+})
+
 
 var getTeamsData = function () {
     return [

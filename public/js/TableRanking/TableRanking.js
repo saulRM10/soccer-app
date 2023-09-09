@@ -117,7 +117,38 @@ const TableRankings = function () {
         return teamData;
     }
 
+    var getRangeIndexOfTiedGdTeams = function (sortedByPointsAndGDTeam) {
+        let i = 0;
+        let j = 1;
+        let arrWithIndexes = [];
 
+        while (j < sortedByPointsAndGDTeam.length) {
+            let isSamePoints = sortedByPointsAndGDTeam[i].points == sortedByPointsAndGDTeam[j].points;
+            let isSameGD = sortedByPointsAndGDTeam[i].gd == sortedByPointsAndGDTeam[j].gd;
+
+            if (isSamePoints && isSameGD) {
+                let isEndOfEqualPoints = sortedByPointsAndGDTeam[j].points != sortedByPointsAndGDTeam[j + 1]?.points;
+                let isEndOfEqualGD = sortedByPointsAndGDTeam[j].gd != sortedByPointsAndGDTeam[j + 1]?.gd;
+
+                if (isEndOfEqualPoints || isEndOfEqualGD) {
+                    arrWithIndexes.push([i, j]);
+                    i = j + 1;
+                    j += 2;
+                    continue;
+                }
+                if (j == sortedByPointsAndGDTeam.length - 1) {
+                    console.log("last", i, j);
+                    arrWithIndexes.push([i, j]);
+                }
+            }
+            else {
+                i++;
+            }
+            j++;
+        }
+
+        return arrWithIndexes;
+    }
 
 
     return {
@@ -125,7 +156,7 @@ const TableRankings = function () {
         sortTeamsByPoints,
         getRangeIndexOfTiedPointsTeams,
         sortTeamsByGoalDifferential,
-
+        getRangeIndexOfTiedGdTeams
     }
 }
 
