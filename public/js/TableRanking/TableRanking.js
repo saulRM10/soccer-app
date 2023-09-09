@@ -97,11 +97,32 @@ const TableRankings = function () {
         return pairsOfTwo;
     }
 
+    var sortTeamsByGoalDifferential = function (teamData, arrWithIndexes) {
+        if (arrWithIndexes.length == 0) {
+            return teamData;
+        }
+
+        arrWithIndexes.forEach(pairIndex => {
+            let startIndex = pairIndex[0];
+            let endIndex = pairIndex[1];
+
+            let subTeamData = teamData.slice(startIndex, endIndex + 1);
+            subTeamData.sort((team1, team2) => team2.gd - team1.gd);
+
+            teamData.splice(startIndex, endIndex - startIndex + 1);
+            teamData.splice(startIndex, 0, subTeamData);
+            teamData = teamData.flat(1);
+        })
+
+        return teamData;
+    }
+
 
     return {
         getTeamPointsAndGoalDifferential,
         sortTeamsByPoints,
-        getRangeIndexOfTiedPointsTeams
+        getRangeIndexOfTiedPointsTeams,
+        sortTeamsByGoalDifferential
     }
 }
 
